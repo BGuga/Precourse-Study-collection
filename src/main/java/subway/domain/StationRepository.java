@@ -27,7 +27,7 @@ public class StationRepository {
     }
 
     public static boolean deleteStation(String name) {
-        Station targetStation = getStation(name);
+        stationInLineValidation(name);
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 
@@ -35,7 +35,7 @@ public class StationRepository {
         return stations().stream()
                 .filter(station -> station.getName().equals(name))
                 .findAny()
-                .orElseThrow(()-> new IllegalArgumentException(NON_EXITING_STATION_ERROR_MESSAGE));
+                .orElseThrow(() -> new IllegalArgumentException(NON_EXITING_STATION_ERROR_MESSAGE));
     }
 
     private static void stationDuplicationCheck(Station station) {
@@ -46,5 +46,25 @@ public class StationRepository {
 
     private static boolean isExistingStation(Station station) {
         return stations.stream().anyMatch(st -> Objects.equals(st.getName(), station.getName()));
+    }
+
+    private static void stationInLineValidation(String station) {
+        List<Line> lines = LineRepository.lines();
+        for (Line line : lines) {
+            checkStation(line, station);
+        }
+    }
+
+    private static void checkStation(Line line, String station) {
+        List<Station> stations = line.getStations();
+        for (Station st : stations) {
+            notAllowExiting(st, station);
+        }
+    }
+
+    private static void notAllowExiting(Station station, String stationName) {
+        if (station.getName().equals(stationName)) {
+            throw new IllegalArgumentException("[ERROR] 노선에 등록되어 있는 역은 삭제가 불가능 합니다.");
+        }
     }
 }

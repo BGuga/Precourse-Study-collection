@@ -30,6 +30,7 @@ public class Line {
     }
 
     public void deleteStation(Station station) {
+        minStationValidation();
         boolean deleted = stations.removeIf((st) -> st.getName().equals(station.getName()));
         if (!deleted) {
             throw new IllegalArgumentException(NON_EXITING_STATION_MESSAGE);
@@ -56,6 +57,12 @@ public class Line {
     private void checkDuplication(Station originStation, Station compareStation) {
         if (originStation.getName().equals(compareStation.getName())) {
             throw new IllegalArgumentException(ALREADY_EXITING_STATION_ERROR_MESSAGE);
+        }
+    }
+
+    private void minStationValidation() {
+        if (stations.size() < 3) {
+            throw new IllegalArgumentException("[ERROR] 노선은 최소 2개의 역을 가지고 있어야 합니다.");
         }
     }
 
