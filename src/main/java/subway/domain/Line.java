@@ -5,12 +5,14 @@ import java.util.List;
 
 public class Line {
     public static final String ALREADY_EXITING_STATION_ERROR_MESSAGE = "[ERROR] 이미 노선에 존재하는 역입니다";
+    public static final String LINE_NAME_LENGTH_ERROR_MESSAGE = "[ERROR] LINE의 이름은 2글자 이상으로 구성됩니다.";
 
     private String name;
     private List<Station> stations = new ArrayList<>();
 
     public Line(String name) {
         this.name = name;
+        lineValidation(name);
     }
 
     public String getName() {
@@ -19,6 +21,13 @@ public class Line {
 
     public void addStation(Station station, int index) {
         stationValidation(station);
+    }
+
+    private void lineValidation(String name) {
+        final int minLineNameLength = 2;
+        if (name.length() < minLineNameLength) {
+            throw new IllegalArgumentException(LINE_NAME_LENGTH_ERROR_MESSAGE);
+        }
     }
 
     private void stationValidation(Station station) {
