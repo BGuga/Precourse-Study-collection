@@ -21,7 +21,7 @@ public class StationController {
             deleteStation();
         }
         if (command == StationCommand.SEARCH) {
-            serachStation();
+            searchStation();
         }
     }
 
@@ -32,6 +32,18 @@ public class StationController {
             outputView.printErrorMessage(e.getMessage());
             enrollStation();
         }
+    }
+
+    private void deleteStation() {
+        try {
+            StationRepository.deleteStation(inputView.getDeleteStationNameByConsole());
+        } catch (IllegalArgumentException e) {
+            outputView.printErrorMessage(e.getMessage());
+            deleteStation();
+        }
+    }
+
+    private void searchStation(){
 
     }
 
@@ -44,13 +56,6 @@ public class StationController {
         }
     }
 
-    private void deleteStation() {
-        try {
-            StationRepository.deleteStation(getStationByConsole().getName());
-        } catch (IllegalArgumentException e) {
-            outputView.printErrorMessage(e.getMessage());
-            deleteStation();
-        }
-    }
+
 
 }
