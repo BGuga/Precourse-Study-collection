@@ -44,7 +44,7 @@ public class StationController {
     }
 
     private void searchStation(){
-
+        outputView.printStations(StationRepository.stations());
     }
 
     private Station getStationByConsole() {
