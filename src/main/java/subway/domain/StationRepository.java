@@ -14,6 +14,7 @@ public class StationRepository {
     }
 
     public static final String ALREADY_EXITING_STATION_ERROR_MESSAGE = "[ERROR] 이미 등록된 역입니다.";
+    public static final String NON_EXITING_STATION_ERROR_MESSAGE = "[ERROR] 존재하지 않는 역 이름 입니다.";
     private static final List<Station> stations = new ArrayList<>();
 
     public static List<Station> stations() {
@@ -27,6 +28,13 @@ public class StationRepository {
 
     public static boolean deleteStation(String name) {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
+    }
+
+    public static Station getStation(String name) {
+        return stations().stream()
+                .filter(station -> station.getName().equals(name))
+                .findAny()
+                .orElseThrow(()-> new IllegalArgumentException(NON_EXITING_STATION_ERROR_MESSAGE));
     }
 
     private static void stationDuplicationCheck(Station station) {
