@@ -54,7 +54,7 @@ public class Line {
     }
 
     private void checkDuplication(Station originStation, Station compareStation) {
-        if (originStation.getName().equals(compareStation)) {
+        if (originStation.getName().equals(compareStation.getName())) {
             throw new IllegalArgumentException(ALREADY_EXITING_STATION_ERROR_MESSAGE);
         }
     }
