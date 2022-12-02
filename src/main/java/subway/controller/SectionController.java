@@ -1,5 +1,11 @@
 package subway.controller;
 
-public class SectionController {
+import subway.view.SectionInputView;
 
+public class SectionController {
+    SectionInputView inputView = new SectionInputView();
+
+    public void progress() {
+        processByCommand(inputView.getCommandByConsole());
+    }
 }
