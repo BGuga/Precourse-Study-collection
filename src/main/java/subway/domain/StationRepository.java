@@ -27,6 +27,7 @@ public class StationRepository {
     }
 
     public static boolean deleteStation(String name) {
+        Station targetStation = getStation(name);
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 
