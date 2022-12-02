@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class LineRepository {
-    static {
+    {
         Line secondLine = new Line("2호선");
         secondLine.addStation(0, StationRepository.getStation("교대역"));
         secondLine.addStation(1, StationRepository.getStation("강남역"));
@@ -27,17 +27,17 @@ public class LineRepository {
         addLine(newBundang);
     }
 
-    private static final List<Line> lines = new ArrayList<>();
+    private static final List<Line> linesdata = new ArrayList<>();
     public static final String ALREADY_EXITING_STATION_ERROR_MESSAGE = "[ERROR] 이미 등록된 역입니다.";
     public static final String NON_EXITING_STATION_ERROR_MESSAGE = "[ERROR] 존재 하지 않는 역의 입력 입니다.";
 
     public static List<Line> lines() {
-        return Collections.unmodifiableList(lines);
+        return Collections.unmodifiableList(linesdata);
     }
 
     public static void addLine(Line line) {
         lineDuplicationCheck(line);
-        lines.add(line);
+        linesdata.add(line);
     }
 
     public static Line getLine(String name) {
@@ -48,7 +48,7 @@ public class LineRepository {
     }
 
     public static void deleteLineByName(String name) {
-        boolean deletedLine = lines.removeIf(line -> Objects.equals(line.getName(), name));
+        boolean deletedLine = linesdata.removeIf(line -> Objects.equals(line.getName(), name));
         if (deletedLine == false) {
             throw new IllegalArgumentException(NON_EXITING_STATION_ERROR_MESSAGE);
         }

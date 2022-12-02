@@ -3,7 +3,7 @@ package subway.domain;
 import java.util.*;
 
 public class StationRepository {
-    static {
+    {
         addStation(new Station("교대역"));
         addStation(new Station("강남역"));
         addStation(new Station("역삼역"));

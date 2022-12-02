@@ -1,8 +1,12 @@
 package subway.controller;
 
+import subway.domain.Line;
 import subway.domain.LineRepository;
+import subway.domain.StationRepository;
 import subway.view.MainInputView;
 import subway.view.MainOutputView;
+
+import java.util.List;
 
 public class MainController {
     MainInputView inputView = new MainInputView();
@@ -10,10 +14,16 @@ public class MainController {
 
     public void process() {
         MainCommand mainCommand;
+        settingForRepository();
         do {
             mainCommand = inputView.getCommandByConsole();
             processByCommand(mainCommand);
         } while (!(mainCommand == MainCommand.QUIT));
+    }
+
+    private void settingForRepository(){
+        StationRepository stationRepository = new StationRepository();
+        LineRepository lineRepository = new LineRepository();
     }
 
     private void processByCommand(MainCommand mainCommand) {
@@ -47,6 +57,8 @@ public class MainController {
     }
 
     private void progressPrintManagement() {
-        outputView.printLineMap(LineRepository.lines());
+        List<Line> lines = LineRepository.lines();
+        outputView.printLineMap(lines);
     }
+
 }
