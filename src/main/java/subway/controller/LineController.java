@@ -66,6 +66,7 @@ public class LineController {
             Line newLine = new Line(inputView.getLineNameByConsole());
             newLine.addStation(0, StationRepository.getStation(inputView.getStartStation()));
             newLine.addStation(1, StationRepository.getStation(inputView.getEndStation()));
+            return newLine;
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
             return getLineWithStartStationAndEndStation();
