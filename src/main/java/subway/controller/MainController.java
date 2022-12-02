@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.domain.LineRepository;
 import subway.view.MainInputView;
 import subway.view.MainOutputView;
 
@@ -46,6 +47,6 @@ public class MainController {
     }
 
     private void progressPrintManagement() {
-
+        outputView.printLineMap(LineRepository.lines());
     }
 }

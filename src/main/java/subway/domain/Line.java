@@ -20,6 +20,10 @@ public class Line {
         return name;
     }
 
+    public List<Station> getStations() {
+        return stations;
+    }
+
     public void addStation(int index, Station station) {
         stationValidation(station);
         stations.add(index, station);
