@@ -29,6 +29,7 @@ public class LineRepository {
 
     private static final List<Line> lines = new ArrayList<>();
     public static final String ALREADY_EXITING_STATION_ERROR_MESSAGE = "[ERROR] 이미 등록된 역입니다.";
+    public static final String NON_EXITING_STATION_ERROR_MESSAGE = "[ERROR] 존재 하지 않는 역의 입력 입니다.";
 
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);
@@ -39,8 +40,11 @@ public class LineRepository {
         lines.add(line);
     }
 
-    public static boolean deleteLineByName(String name) {
-        return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    public static void deleteLineByName(String name) {
+        boolean deletedLine = lines.removeIf(line -> Objects.equals(line.getName(), name));
+        if (deletedLine == false) {
+            throw new IllegalArgumentException(NON_EXITING_STATION_ERROR_MESSAGE);
+        }
     }
 
     private static void lineDuplicationCheck(Line line) {

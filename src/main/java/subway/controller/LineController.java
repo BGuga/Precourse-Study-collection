@@ -35,13 +35,13 @@ public class LineController {
             LineRepository.addLine(getLineByConsole());
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
-            enrollStation();
+            enrollLine();
         }
     }
 
     private void deleteLine() {
         try {
-            StationRepository.deleteStation(inputView.getDeleteStationNameByConsole());
+            LineRepository.deleteLineByName(inputView.getDeleteLineNameByConsole());
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
             deleteStation();
