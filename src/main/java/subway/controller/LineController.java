@@ -1,5 +1,7 @@
 package subway.controller;
 
+import subway.domain.Line;
+import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.view.LineInputView;
@@ -30,7 +32,7 @@ public class LineController {
 
     private void enrollLine() {
         try {
-            StationRepository.addStation(getStationByConsole());
+            LineRepository.addLine(getLineByConsole());
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
             enrollStation();
@@ -46,16 +48,27 @@ public class LineController {
         }
     }
 
-    private void searchLine(){
+    private void searchLine() {
         outputView.printStations(StationRepository.stations());
     }
 
-    private Station getLineByConsole() {
+    private Line getLineByConsole() {
         try {
-            return new Station(inputView.getStationNameByConsole());
+            return getLineWithStartStationAndEndStation();
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
-            return getStationByConsole();
+            return getLineByConsole();
+        }
+    }
+
+    private Line getLineWithStartStationAndEndStation() {
+        try {
+            Line newLine = new Line(inputView.getLineNameByConsole());
+            newLine.addStation(0, StationRepository.getStation(inputView.getStartStation()));
+            newLine.addStation(1, StationRepository.getStation(inputView.getEndStation()));
+        } catch (IllegalArgumentException e) {
+            outputView.printErrorMessage(e.getMessage());
+            return getLineWithStartStationAndEndStation();
         }
     }
 }
