@@ -19,8 +19,9 @@ public class Line {
         return name;
     }
 
-    public void addStation(Station station, int index) {
+    public void addStation(int index, Station station ) {
         stationValidation(station);
+        stations.add(index,station);
     }
 
     private void lineValidation(String name) {
