@@ -1,5 +1,6 @@
 package subway.view;
 
+import subway.domain.Line;
 import subway.domain.Station;
 
 import java.util.List;
@@ -11,13 +12,13 @@ public class LineOutputView {
         System.out.println();
     }
 
-    public void printStations(List<Station> stations) {
-        for (Station station : stations) {
-            System.out.println(makeStationOutputMessage(station));
+    public void printLines(List<Line> lines) {
+        for (Line line : lines) {
+            System.out.println(makeStationOutputMessage(line));
         }
     }
 
-    private String makeStationOutputMessage(Station station){
-        return "[INFO] "+station.getName();
+    private String makeStationOutputMessage(Line line){
+        return "[INFO] "+line.getName();
     }
 }

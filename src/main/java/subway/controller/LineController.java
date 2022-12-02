@@ -49,7 +49,7 @@ public class LineController {
     }
 
     private void searchLine() {
-        outputView.printStations(StationRepository.stations());
+        outputView.printLines(LineRepository.lines());
     }
 
     private Line getLineByConsole() {
