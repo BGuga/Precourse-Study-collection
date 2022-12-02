@@ -44,7 +44,7 @@ public class LineController {
             LineRepository.deleteLineByName(inputView.getDeleteLineNameByConsole());
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
-            deleteStation();
+            deleteLine();
         }
     }
 

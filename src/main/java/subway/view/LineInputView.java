@@ -39,6 +39,12 @@ public class LineInputView {
         return scanner.nextLine();
     }
 
+    public String getDeleteLineNameByConsole() {
+        System.out.println("## 삭제할 노선 이름을 입력하세요.");
+        System.out.println();
+        return scanner.nextLine();
+    }
+
     private void printValidList() {
         System.out.println("## 노선 관리 화면");
         System.out.println("1. 노선 등록");
