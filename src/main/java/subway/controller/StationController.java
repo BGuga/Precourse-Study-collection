@@ -44,4 +44,13 @@ public class StationController {
         }
     }
 
+    private void deleteStation() {
+        try {
+            StationRepository.deleteStation(getStationByConsole().getName());
+        } catch (IllegalArgumentException e) {
+            outputView.printErrorMessage(e.getMessage());
+            deleteStation();
+        }
+    }
+
 }
