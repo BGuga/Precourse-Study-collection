@@ -40,6 +40,13 @@ public class LineRepository {
         lines.add(line);
     }
 
+    public static Line getLine(String name) {
+        return lines().stream()
+                .filter(line -> line.getName().equals(name))
+                .findAny()
+                .orElseThrow(()-> new IllegalArgumentException(NON_EXITING_STATION_ERROR_MESSAGE));
+    }
+
     public static void deleteLineByName(String name) {
         boolean deletedLine = lines.removeIf(line -> Objects.equals(line.getName(), name));
         if (deletedLine == false) {
