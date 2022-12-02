@@ -17,7 +17,7 @@ public class LineRepository {
         thirdLine.addStation(0, StationRepository.getStation("교대역"));
         thirdLine.addStation(1, StationRepository.getStation("남부터미널역"));
         thirdLine.addStation(2, StationRepository.getStation("양재역"));
-        thirdLine.addStation(2, StationRepository.getStation("매봉역"));
+        thirdLine.addStation(3, StationRepository.getStation("매봉역"));
         addLine(thirdLine);
 
         Line newBundang = new Line("신분당선");
