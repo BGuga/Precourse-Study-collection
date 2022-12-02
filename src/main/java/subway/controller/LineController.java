@@ -18,14 +18,14 @@ public class LineController {
         processByCommand(inputView.getCommandByConsole());
     }
 
-    private void processByCommand(StationCommand command) {
-        if (command == StationCommand.ENROLL) {
+    private void processByCommand(LineCommand command) {
+        if (command == LineCommand.ENROLL) {
             enrollLine();
         }
-        if (command == StationCommand.DELETE) {
+        if (command == LineCommand.DELETE) {
             deleteLine();
         }
-        if (command == StationCommand.SEARCH) {
+        if (command == LineCommand.SEARCH) {
             searchLine();
         }
     }

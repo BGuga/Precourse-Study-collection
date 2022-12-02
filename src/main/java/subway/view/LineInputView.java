@@ -1,5 +1,6 @@
 package subway.view;
 
+import subway.controller.LineCommand;
 import subway.controller.StationCommand;
 
 import java.util.Scanner;
@@ -8,12 +9,12 @@ public class LineInputView {
 
     private Scanner scanner = new Scanner(System.in);
 
-    public StationCommand getCommandByConsole() {
+    public LineCommand getCommandByConsole() {
         printValidList();
         while (true) {
             try {
                 printSelectFunctionMessage();
-                return StationCommand.of(scanner.nextLine());
+                return LineCommand.of(scanner.nextLine());
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
