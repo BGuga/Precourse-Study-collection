@@ -1,5 +1,7 @@
 package subway.controller;
 
+import subway.domain.Station;
+import subway.domain.StationRepository;
 import subway.view.StationInputView;
 import subway.view.StationOutputView;
 
@@ -13,7 +15,7 @@ public class StationController {
 
     private void processByCommand(StationCommand command) {
         if (command == StationCommand.ENROLL) {
-            enrollStation()
+            enrollStation();
         }
         if (command == StationCommand.DELETE) {
             deleteStation();
@@ -22,4 +24,24 @@ public class StationController {
             serachStation();
         }
     }
+
+    private void enrollStation() {
+        try {
+            StationRepository.addStation(getStationByConsole());
+        } catch (IllegalArgumentException e) {
+            outputView.printErrorMessage(e.getMessage());
+            enrollStation();
+        }
+
+    }
+
+    private Station getStationByConsole() {
+        try {
+            return new Station(inputView.getStationNameByConsole());
+        } catch (IllegalArgumentException e) {
+            outputView.printErrorMessage(e.getMessage());
+            return getStationByConsole();
+        }
+    }
+
 }

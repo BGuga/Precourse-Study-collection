@@ -20,6 +20,11 @@ public class StationInputView {
         }
     }
 
+    public String getStationNameByConsole() {
+        printEnrollStationMessage();
+        return scanner.nextLine();
+    }
+
     private void printValidList() {
         System.out.println("## 역 관리 화면");
         System.out.println("1. 역 등록");
@@ -31,5 +36,9 @@ public class StationInputView {
 
     private void printSelectFunctionMessage() {
         System.out.println("## 원하는 기능을 선택하세요.");
+    }
+
+    private void printEnrollStationMessage(){
+        System.out.println("## 등록할 역 이름을 입력하세요.");
     }
 }
