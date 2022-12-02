@@ -6,6 +6,7 @@ import java.util.List;
 public class Line {
     public static final String ALREADY_EXITING_STATION_ERROR_MESSAGE = "[ERROR] 이미 노선에 존재하는 역입니다";
     public static final String LINE_NAME_LENGTH_ERROR_MESSAGE = "[ERROR] LINE의 이름은 2글자 이상으로 구성됩니다.";
+    public static final String NON_EXITING_STATION_MESSAGE = "[ERROR] 해당 노선에 존재하지 않는 역입니다.";
 
     private String name;
     private List<Station> stations = new ArrayList<>();
@@ -19,9 +20,16 @@ public class Line {
         return name;
     }
 
-    public void addStation(int index, Station station ) {
+    public void addStation(int index, Station station) {
         stationValidation(station);
-        stations.add(index,station);
+        stations.add(index, station);
+    }
+
+    public void deleteStation(Station station) {
+        boolean deleted = stations.removeIf((st) -> st.getName().equals(station.getName()));
+        if (!deleted) {
+            throw new IllegalArgumentException(NON_EXITING_STATION_MESSAGE);
+        }
     }
 
     private void lineValidation(String name) {

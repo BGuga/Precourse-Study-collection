@@ -20,7 +20,7 @@ public class SectionController {
             addSection();
         }
         if (command == SectionCommand.DELETE) {
-            deleteSectoin();
+            deleteSection();
         }
     }
 
@@ -28,10 +28,21 @@ public class SectionController {
         try {
             Line line = LineRepository.getLine(inputView.getLineNameByConsole());
             Station station = StationRepository.getStation(inputView.getStationByConsole());
-            line.addStation(inputView.getStationIndex(),station);
+            line.addStation(inputView.getStationIndex(), station);
         } catch (IllegalArgumentException e) {
             outputView.printErrorMessage(e.getMessage());
             addSection();
+        }
+    }
+
+    private void deleteSection() {
+        try {
+            Line line = LineRepository.getLine(inputView.getLineNameByConsole());
+            Station station = StationRepository.getStation(inputView.getStationByConsole());
+            line.deleteStation(station);
+        } catch (IllegalArgumentException e) {
+            outputView.printErrorMessage(e.getMessage());
+            deleteSection();
         }
     }
 }
