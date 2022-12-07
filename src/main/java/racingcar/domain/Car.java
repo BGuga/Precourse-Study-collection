@@ -9,6 +9,10 @@ public class Car {
         this.name = new CarName(name);
     }
 
+    public CarName getName() {
+        return name;
+    }
+
     public void move(CarMoveValue num) {
         if (num.isBigger(standardForMovingValue))
             this.position++;
