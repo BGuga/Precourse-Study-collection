@@ -10,11 +10,13 @@ public class Car {
     }
 
     public void move(CarMoveValue num) {
-        if(num.isBigger(standardForMovingValue))
-        this.position++;
+        if (num.isBigger(standardForMovingValue))
+            this.position++;
     }
 
-
+    public Position getPosition() {
+        return new Position(this.name, this.position);
+    }
 
 
     // 추가 기능 구현

@@ -12,6 +12,10 @@ public class CarName {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     private void checkValidation(String name) {
         checkNameLength(name.length());
     }
