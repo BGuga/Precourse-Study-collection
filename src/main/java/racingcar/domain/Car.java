@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
     private final static int MIN_CAR_NAME_LENGTH = 1;
