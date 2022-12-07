@@ -14,6 +14,15 @@ public class InputView {
         return makeStringListToCarList(carNames);
     }
 
+    public int readTrialNumbers() {
+        System.out.println("시도할 회수는 몇회인가요?");
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요");
+        }
+    }
+
     private List<String> splitByComma(String data) {
         return Arrays.asList(data.split(","));
     }
