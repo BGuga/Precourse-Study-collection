@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 public class CarMoveValue {
-    private final static int MIN_CAR_MOVE_INPUT = 0;
+    public final static int MIN_CAR_MOVE_INPUT = 0;
     public static final int MAX_CAR_MOVE_INPUT = 9;
     public static final String INVALID_MOVE_INPUT_MESSAGE = "[ERROR] 유효하지 않은 이동값의 입력입니다.";
 
