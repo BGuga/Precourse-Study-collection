@@ -1,4 +1,6 @@
-package racingcar.domain;
+package racingcar.dto;
+
+import racingcar.domain.CarName;
 
 public class Position {
     private final CarName name;

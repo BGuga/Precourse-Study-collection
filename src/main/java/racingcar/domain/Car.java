@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.dto.Position;
+
 public class Car {
     private final static CarMoveValue standardForMovingValue = new CarMoveValue(3);
     private final CarName name;

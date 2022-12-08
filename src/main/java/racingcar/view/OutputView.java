@@ -1,8 +1,8 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
-import racingcar.domain.MultiPosition;
-import racingcar.domain.Position;
+import racingcar.dto.MultiPosition;
+import racingcar.dto.Position;
 
 import java.util.List;
 import java.util.StringJoiner;

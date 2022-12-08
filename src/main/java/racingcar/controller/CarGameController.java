@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.domain.CarGame;
-import racingcar.domain.MultiPosition;
+import racingcar.dto.MultiPosition;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
