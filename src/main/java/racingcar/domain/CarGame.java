@@ -5,6 +5,7 @@ import racingcar.dto.MultiPosition;
 import racingcar.dto.Position;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,13 +46,9 @@ public class CarGame {
     }
 
     private int getWinningCarPosition() {
-        int maxPosition = enrolledCars.get(0).getPosition().getPositionValue();
-        for (Car car : enrolledCars) {
-            int carPosition = car.getPosition().getPositionValue();
-            if (maxPosition < carPosition) {
-                maxPosition = carPosition;
-            }
-        }
-        return maxPosition;
+        return enrolledCars.stream()
+                .map(car -> car.getPosition().getPositionValue())
+                .max(Integer::compareTo)
+                .get();
     }
 }
