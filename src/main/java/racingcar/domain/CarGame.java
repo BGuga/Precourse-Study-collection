@@ -26,7 +26,7 @@ public class CarGame {
     public List<Car> getWinningCars() {
         int winningPosition = getWinningCarPosition();
         return enrolledCars.stream()
-                .filter(car -> car.getPosition().getPosition() == winningPosition)
+                .filter(car -> car.getPosition().getPositionValue() == winningPosition)
                 .collect(Collectors.toList());
     }
 
@@ -45,9 +45,9 @@ public class CarGame {
     }
 
     private int getWinningCarPosition() {
-        int maxPosition = enrolledCars.get(0).getPosition().getPosition();
+        int maxPosition = enrolledCars.get(0).getPosition().getPositionValue();
         for (Car car : enrolledCars) {
-            int carPosition = car.getPosition().getPosition();
+            int carPosition = car.getPosition().getPositionValue();
             if (maxPosition < carPosition) {
                 maxPosition = carPosition;
             }

@@ -36,7 +36,7 @@ public class OutputView {
 
     private void printPosition(Position position) {
         String outputPosition = "";
-        outputPosition += position.getName().getName() + " : " + makeStepByPosition(position.getPosition());
+        outputPosition += position.getName().getName() + " : " + makeStepByPosition(position.getPositionValue());
         System.out.println(outputPosition);
     }
 
