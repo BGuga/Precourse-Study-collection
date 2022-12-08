@@ -23,6 +23,10 @@ public class OutputView {
         System.out.println(winnerMessage);
     }
 
+    public void printErrorMessage(String message) {
+        System.out.println(message);
+    }
+
     private void printCarPositions(MultiPosition multiPosition) {
         for (Position position : multiPosition.getPositions()) {
             printPosition(position);
