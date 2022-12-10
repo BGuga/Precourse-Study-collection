@@ -1,5 +1,6 @@
 package vendingmachine.domain;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +14,15 @@ public class ProductMachine {
         for (Product product : additionalProduct.keySet()) {
             addProduct(product, additionalProduct.get(product));
         }
+    }
+
+    public boolean canBuyAnything(Money money) {
+        ProductPrice minProductPrice = storage.keySet().stream()
+                .map(product -> product.getProductPrice())
+                .sorted(Comparator.comparing(ProductPrice::getPrice))
+                .findFirst()
+                .get();
+        return money.getMoney() > minProductPrice.getPrice();
     }
 
     private void addProduct(Product product, ProductAmount productAmount) {
@@ -49,6 +59,6 @@ public class ProductMachine {
     }
 
     private void enrollProduct(Product product, ProductAmount productAmount) {
-        storage.put(product,productAmount);
+        storage.put(product, productAmount);
     }
 }

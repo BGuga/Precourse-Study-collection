@@ -9,6 +9,10 @@ public class ProductPrice {
 
     private final int price;
 
+    public int getPrice() {
+        return price;
+    }
+
     public ProductPrice(int price) {
         validatePrice(price);
         this.price = price;

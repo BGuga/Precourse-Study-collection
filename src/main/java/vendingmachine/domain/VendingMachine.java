@@ -1,5 +1,7 @@
 package vendingmachine.domain;
 
+import java.util.Map;
+
 public class VendingMachine {
     private CoinMachine coinMachine;
     private ProductMachine productMachine;
@@ -21,5 +23,13 @@ public class VendingMachine {
 
     public void insertMoney(Money money) {
         this.insertedMoney.add(money);
+    }
+
+    public boolean canBuy() {
+        return productMachine.canBuyAnything(insertedMoney);
+    }
+
+    public Map<Coin, Integer> getChanges() {
+        return coinMachine.getChanges(insertedMoney);
     }
 }
