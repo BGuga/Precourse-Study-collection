@@ -9,6 +9,10 @@ public class Product {
         this.productPrice = productPrice;
     }
 
+    public String getProductName() {
+        return productName;
+    }
+
     public boolean isSame(Product otherProduct) {
         return this.productName.equals(otherProduct.productName);
     }
