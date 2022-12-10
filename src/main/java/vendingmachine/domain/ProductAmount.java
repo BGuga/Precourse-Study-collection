@@ -16,9 +16,18 @@ public class ProductAmount {
         validate(amount);
     }
 
+    public void sub(int amount) {
+        this.amount -= amount;
+        validate(amount);
+    }
+
     private void validate(int amount) {
         if (amount < MIN_AMOUNT) {
             throw new IllegalArgumentException(String.format(MIN_AMOUNT_ERROR_MESSAGE, MIN_AMOUNT));
         }
+    }
+
+    public int getAmount() {
+        return amount;
     }
 }

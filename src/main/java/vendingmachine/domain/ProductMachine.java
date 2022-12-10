@@ -1,5 +1,6 @@
 package vendingmachine.domain;
 
+import javax.swing.*;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +17,15 @@ public class ProductMachine {
         }
     }
 
+    public Product getProductOf(String productName) {
+        return storage.keySet().stream()
+                .filter(product -> product.getProductName().equals(productName))
+                .findAny()
+                .orElseThrow(() -> {
+                    throw new IllegalArgumentException("[ERROR] 등록되지 않은 상품 입니다.");
+                });
+    }
+
     public boolean canBuyAnything(Money money) {
         ProductPrice minProductPrice = storage.keySet().stream()
                 .map(product -> product.getProductPrice())
@@ -23,6 +33,12 @@ public class ProductMachine {
                 .findFirst()
                 .get();
         return money.getMoney() > minProductPrice.getPrice();
+    }
+
+    public void deleteOne(Product product) {
+        checkProductCount(product);
+        ProductAmount productAmount = storage.get(product);
+        productAmount.sub(1);
     }
 
     private void addProduct(Product product, ProductAmount productAmount) {
@@ -60,5 +76,11 @@ public class ProductMachine {
 
     private void enrollProduct(Product product, ProductAmount productAmount) {
         storage.put(product, productAmount);
+    }
+
+    private void checkProductCount(Product product) {
+        if (storage.get(product).getAmount() < 1) {
+            throw new IllegalArgumentException("[ERROR] 수량이 떨어진 상품은 구매할 수 없습니다.");
+        }
     }
 }
