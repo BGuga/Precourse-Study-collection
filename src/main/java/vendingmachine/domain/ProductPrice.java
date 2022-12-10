@@ -14,6 +14,10 @@ public class ProductPrice {
         this.price = price;
     }
 
+    public boolean isSame(ProductPrice otherPrice) {
+        return this.price == otherPrice.price;
+    }
+
     private void validatePrice(int price) {
         checkMinPrice(price);
         checkMultiple(price);

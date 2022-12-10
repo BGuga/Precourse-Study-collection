@@ -8,4 +8,8 @@ public class Product {
         this.productName = productName;
         this.productPrice = productPrice;
     }
+
+    public boolean isSame(Product otherProduct) {
+        return this.productPrice.isSame(otherProduct.productPrice) && this.productName.equals(otherProduct.productName);
+    }
 }
