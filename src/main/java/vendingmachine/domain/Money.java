@@ -3,7 +3,7 @@ package vendingmachine.domain;
 public class Money {
     public static final String INVALID_MONEY_ERROR_MESSAGE = "[ERROR] 돈은 10으로 나누어 떨어져야 합니다.";
 
-    private final int money;
+    private int money;
 
     public Money(int money) {
         validate(money);
@@ -12,6 +12,10 @@ public class Money {
 
     public int getMoney() {
         return money;
+    }
+
+    public void add(Money money) {
+        this.money += money.money;
     }
 
     private void validate(int money) {
