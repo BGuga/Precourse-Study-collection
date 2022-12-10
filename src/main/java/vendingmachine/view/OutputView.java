@@ -1,6 +1,7 @@
 package vendingmachine.view;
 
 import vendingmachine.domain.Coin;
+import vendingmachine.domain.Money;
 
 import java.util.Comparator;
 import java.util.List;
@@ -20,6 +21,10 @@ public class OutputView {
         for (Coin coin : sortedCoinList) {
             printCoin(coin, coins.get(coin));
         }
+    }
+
+    public void printInsertedMoney(Money money){
+        System.out.println(String.format("투입 금액: %d원", money.getMoney()));
     }
 
     private void printAllCoins(Map<Coin, Integer> coins) {
