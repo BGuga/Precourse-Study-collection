@@ -8,7 +8,8 @@ public class ProductMachine {
     public static final String PRODUCT_PRICE_DIFFERENCE_ERROR_MESSAGE = "[ERROR] 등록된 상품의 가격이 다를 수 없습니다.";
     private Map<Product, ProductAmount> storage = new HashMap<>();
 
-    public void addProducts(Map<Product, ProductAmount> additionalProduct) {
+    public void addProducts(ProductBundle productBundle) {
+        Map<Product, ProductAmount> additionalProduct = productBundle.getProducts();
         for (Product product : additionalProduct.keySet()) {
             addProduct(product, additionalProduct.get(product));
         }

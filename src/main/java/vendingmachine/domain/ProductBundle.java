@@ -17,6 +17,10 @@ public class ProductBundle {
         validateProducts();
     }
 
+    public Map<Product, ProductAmount> getProducts() {
+        return new HashMap<>(products);
+    }
+
     private void validateProducts() {
         long uniqueProductCount = products.keySet().stream()
                 .map(product -> product.getProductName())

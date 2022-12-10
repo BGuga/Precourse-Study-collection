@@ -10,5 +10,9 @@ public class VendingMachine {
         this.productMachine = new ProductMachine();
     }
 
-    public void addProduct
+    public void addProductBundle(ProductBundle productBundle){
+        productMachine.addProducts(productBundle);
+    }
+
+
 }
