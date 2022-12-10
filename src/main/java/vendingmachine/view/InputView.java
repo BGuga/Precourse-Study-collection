@@ -22,12 +22,22 @@ public class InputView {
 
     public ProductBundle readProductBundle() {
         System.out.println("상품명과 가격, 수량을 입력해 주세요.");
-        try{
+        try {
             Map<Product, ProductAmount> productData = getProductData();
             return new ProductBundle(productData);
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return readProductBundle();
+        }
+    }
+
+    public Money readInsertMoney() {
+        System.out.println("투입 금액을 입력해 주세요.");
+        try {
+            return new Money(getIntValue());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return readInsertMoney();
         }
     }
 
