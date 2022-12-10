@@ -18,6 +18,10 @@ public class Money {
         this.money += money.money;
     }
 
+    public void sub(int money) {
+        this.money -= money;
+    }
+
     private void validate(int money) {
         if (money % 10 != 0) {
             throw new IllegalArgumentException(INVALID_MONEY_ERROR_MESSAGE);

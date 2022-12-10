@@ -1,6 +1,7 @@
 package vendingmachine.controller;
 
 import vendingmachine.domain.Money;
+import vendingmachine.domain.ProductBundle;
 import vendingmachine.domain.VendingMachine;
 import vendingmachine.view.InputView;
 import vendingmachine.view.OutputView;
@@ -23,7 +24,8 @@ public class VendingMachineController {
     }
 
     private void insertProductInVendingMachine() {
-        vendingMachine.addProductBundle(inputView.readProductBundle());
+        ProductBundle productBundle = inputView.readProductBundle();
+        vendingMachine.addProductBundle(productBundle);
     }
 
     private void insertMoneyInVendingMachine() {
@@ -39,7 +41,7 @@ public class VendingMachineController {
     }
 
     private Money getChangesFromUser() {
-        return inputView.readInsertMoney();
+        return inputView.readChangesAmount();
     }
 
     private void buyProduct(String productName) {

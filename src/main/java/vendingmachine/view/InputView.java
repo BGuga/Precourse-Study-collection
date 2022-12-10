@@ -96,11 +96,17 @@ public class InputView {
     private void insertResult(Map<Product, ProductAmount> map, String info) {
         checkvalidInfoData(info);
         try {
-            List<String> data = Arrays.asList(info.split(","));
+            List<String> data = getProductData(info);
             map.put(new Product(data.get(0), new ProductPrice(Integer.parseInt(data.get(1)))), new ProductAmount(Integer.parseInt(data.get(2))));
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 상품 가격과 수량은 숫자로 입력해 주세요");
         }
+    }
+
+    private List<String> getProductData(String productData) {
+        String target = productData.substring(1, productData.length() - 1);
+        List<String> result = Arrays.asList(target.split(","));
+        return result;
     }
 
     private void checkvalidInfoData(String info) {

@@ -44,6 +44,7 @@ public class VendingMachine {
         enoughInsertedMoney(product);
         try {
             productMachine.deleteOne(product);
+            spendMoney(product.getProductPrice().getPrice());
         } catch (IllegalArgumentException e) {
             machineOff();
         }
@@ -61,5 +62,9 @@ public class VendingMachine {
 
     private void machineOff() {
         this.machinePower = false;
+    }
+
+    private void spendMoney(int money) {
+        this.insertedMoney.sub(money);
     }
 }
