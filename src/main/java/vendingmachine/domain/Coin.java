@@ -24,7 +24,7 @@ public enum Coin {
         return amount;
     }
 
-    public static Map<Coin, Integer> of(int money) {
+    public static Map<Coin, Integer> LeastCoinOf(int money) {
         checkValidMoney(money);
         Map<Coin, Integer> coinPocket = new HashMap<>();
         makeMoneyToLeastCoin(coinPocket, money);
