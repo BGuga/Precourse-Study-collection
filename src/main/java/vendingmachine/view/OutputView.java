@@ -17,7 +17,7 @@ public class OutputView {
 
     public void printReceivedCoins(Map<Coin, Integer> coins) {
         System.out.println("잔돈");
-        List<Coin> sortedCoinList = coins.keySet().stream().sorted(Comparator.comparing(Coin::getAmount)).collect(Collectors.toList());
+        List<Coin> sortedCoinList = coins.keySet().stream().sorted(Comparator.comparing(Coin::getAmount).reversed()).collect(Collectors.toList());
         for (Coin coin : sortedCoinList) {
             printCoin(coin, coins.get(coin));
         }
