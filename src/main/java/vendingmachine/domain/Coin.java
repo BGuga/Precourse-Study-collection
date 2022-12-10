@@ -9,8 +9,6 @@ public enum Coin {
     COIN_50(50),
     COIN_10(10);
 
-    public static final String INVALID_MONEY_TO_COIN_ERROR_MESSAGE = "[ERROR] 동전으로 바뀔 수 없는 돈의 입력 입니다.";
-
     private final int amount;
 
     Coin(final int amount) {
@@ -24,18 +22,12 @@ public enum Coin {
         return amount;
     }
 
-    public static Map<Coin, Integer> LeastCoinOf(int money) {
-        checkValidMoney(money);
+    public static Map<Coin, Integer> LeastCoinOf(Money money) {
         Map<Coin, Integer> coinPocket = new HashMap<>();
-        makeMoneyToLeastCoin(coinPocket, money);
+        makeMoneyToLeastCoin(coinPocket, money.getMoney());
         return coinPocket;
     }
 
-    private static void checkValidMoney(int money) {
-        if (money < 0 || money % 10 != 0) {
-            throw new IllegalArgumentException(INVALID_MONEY_TO_COIN_ERROR_MESSAGE);
-        }
-    }
 
     private static void makeMoneyToLeastCoin(Map<Coin, Integer> coinPocket, int money) {
         List<Coin> orderedCoinList = getReverseOrderCoinByPrice();

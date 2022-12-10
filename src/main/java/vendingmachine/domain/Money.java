@@ -10,6 +10,10 @@ public class Money {
         this.money = money;
     }
 
+    public int getMoney() {
+        return money;
+    }
+
     private void validate(int money) {
         if (money % 10 != 0) {
             throw new IllegalArgumentException(INVALID_MONEY_ERROR_MESSAGE);

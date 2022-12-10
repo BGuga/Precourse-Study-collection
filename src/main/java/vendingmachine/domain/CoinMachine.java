@@ -10,7 +10,7 @@ public class CoinMachine {
 
     }
 
-    public void insertMoney(int money) {
+    public void insertMoney(Money money) {
         Map<Coin, Integer> coinIntegerMap = Coin.LeastCoinOf(money);
         for (Coin coin : coinIntegerMap.keySet()) {
             coins.computeIfPresent(coin, (key, value) -> value + coinIntegerMap.get(coin));
