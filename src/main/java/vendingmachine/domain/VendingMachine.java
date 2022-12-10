@@ -35,6 +35,10 @@ public class VendingMachine {
         return coinMachine.getChanges(insertedMoney);
     }
 
+    public Map<Coin, Integer> getEnrolledCoins() {
+        return coinMachine.getAllCoins();
+    }
+
     public void buy(String productName) {
         Product product = productMachine.getProductOf(productName);
         enoughInsertedMoney(product);

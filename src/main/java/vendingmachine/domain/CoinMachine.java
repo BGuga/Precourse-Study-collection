@@ -33,6 +33,10 @@ public class CoinMachine {
         return changes;
     }
 
+    public Map<Coin, Integer> getAllCoins() {
+        return coins;
+    }
+
     private List<Coin> getOrderedCoin() {
         return coins.keySet().stream()
                 .sorted(Comparator.comparing(Coin::getAmount).reversed())
