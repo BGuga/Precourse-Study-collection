@@ -12,4 +12,8 @@ public class Product {
     public boolean isSame(Product otherProduct) {
         return this.productName.equals(otherProduct.productName);
     }
+
+    public boolean samePrice(Product otherProduct) {
+        return this.productPrice.isSame(otherProduct.productPrice);
+    }
 }
