@@ -27,6 +27,10 @@ public class OutputView {
         System.out.println(String.format("투입 금액: %d원", money.getMoney()));
     }
 
+    public void printErrorMessage(String message){
+        System.out.println(message);
+    }
+
     private void printAllCoins(Map<Coin, Integer> coins) {
         for (Coin coin : Coin.values()) {
             printCoin(coin, coins.getOrDefault(coin, 0));
