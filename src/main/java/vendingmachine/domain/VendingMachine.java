@@ -45,6 +45,10 @@ public class VendingMachine {
         }
     }
 
+    public Money getInsertedMoney() {
+        return insertedMoney;
+    }
+
     private void enoughInsertedMoney(Product product) {
         if (insertedMoney.getMoney() < product.getProductPrice().getPrice()) {
             throw new IllegalArgumentException("[ERROR] 물건을 구입하기 위한 금액이 부족합니다.");
