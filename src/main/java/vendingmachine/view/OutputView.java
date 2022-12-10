@@ -2,13 +2,24 @@ package vendingmachine.view;
 
 import vendingmachine.domain.Coin;
 
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class OutputView {
 
     public void printExchange(Map<Coin, Integer> coins) {
         System.out.println("자판기가 보유한 동전");
         printAllCoins(coins);
+    }
+
+    public void printReceivedCoins(Map<Coin, Integer> coins) {
+        System.out.println("잔돈");
+        List<Coin> sortedCoinList = coins.keySet().stream().sorted(Comparator.comparing(Coin::getAmount)).collect(Collectors.toList());
+        for (Coin coin : sortedCoinList) {
+            printCoin(coin, coins.get(coin));
+        }
     }
 
     private void printAllCoins(Map<Coin, Integer> coins) {
